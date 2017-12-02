@@ -1,0 +1,11 @@
+avanzu_admin_dash_demo:
+    path: /demo-admin/dashboard/
+    defaults: {_controller: AvanzuAdminThemeBundle:Default:dashboard}
+
+carteleria_carteleria_homepage:
+    path:     /
+    defaults: { _controller: CarteleriaCarteleriaBundle:Default:index }
+
+welcome:
+    path:     /
+    defaults: { _controller: CarteleriaCarteleriaBundle:Default:index }

@@ -1,0 +1,6 @@
+carteleria_carteleria:
+    resource: "@CarteleriaCarteleriaBundle/Resources/config/routing.yml"
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
