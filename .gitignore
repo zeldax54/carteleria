@@ -7,3 +7,4 @@ log/
 app/log
 /log
 .idea/workspace.xml
+.git/*
