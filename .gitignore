@@ -1,5 +1,6 @@
 var/cache/*
 var/logs/*
+var/sesions/*
 log/
 .idea/
 *.log
