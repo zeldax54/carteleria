@@ -4,8 +4,21 @@ avanzu_admin_dash_demo:
 
 carteleria_carteleria_homepage:
     path:     /
-    defaults: { _controller: CarteleriaCarteleriaBundle:Default:index }
+    defaults: { _controller: carteleriaBundle:Default:index }
 
 welcome:
     path:     /
-    defaults: { _controller: CarteleriaCarteleriaBundle:Default:index }
+    defaults: { _controller: carteleriaBundle:Default:index }
+
+horarios:
+    path:     /horarios
+    defaults: { _controller: carteleriaBundle:Horarios:index }
+
+
+avanzu_admin_ui_gen_demo:
+    path: /demo-admin/ui-elements/general/
+    defaults: {_controller: AvanzuAdminThemeBundle:Default:uiGeneral}
+
+avanzu_admin_demo:
+    path: /demo-admin/
+    defaults: {_controller: AvanzuAdminThemeBundle:Default:index}

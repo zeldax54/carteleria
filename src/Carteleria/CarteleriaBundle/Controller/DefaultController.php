@@ -13,6 +13,6 @@ class DefaultController extends Controller
         $c->setOption('skin','skin-green-light');
         $c->setOption('control_sidebar',false);
         $c->setOption('collapsed_sidebar',true);
-        return $this->render('CarteleriaCarteleriaBundle:Default:index.html.twig');
+        return $this->render('carteleriaBundle:Default:index.html.twig');
     }
 }

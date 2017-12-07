@@ -2,7 +2,8 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
-    - { resource: "@CarteleriaCarteleriaBundle/Resources/config/services.yml" }
+    - { resource: "@carteleriaBundle/Resources/config/services.yml" }
+
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -74,7 +75,7 @@ swiftmailer:
     spool: { type: memory }
 
 avanzu_admin_theme:
-    use_assetic: true
+    use_assetic: false
     bower_bin: C:\Users\HL\AppData\Roaming\npm\bower # that's the default value
 #      theme:
 #        default_avatar: bundles/avanzuadmintheme/img/avatar.png
@@ -93,3 +94,18 @@ avanzu_admin_theme:
 
 assetic:
     use_controller: false
+    bundles:        [ carteleriaBundle ]
+    filters:
+        uglifyjs2:
+            # the path to the uglifyjs executable
+            bin: C:\Users\HL\AppData\Roaming\npm\uglifyjs
+        uglifycss:
+            bin: / C:\Users\HL\AppData\Roaming\npm\uglifycss
+    # java: '/usr/bin/java'
+        yui_css:
+            jar: '%kernel.project_dir%/app/Resources/java/yuicompressor.jar'
+        yui_js:
+            jar: '%kernel.project_dir%/app/Resources/java/yuicompressor.jar'
+
+
+

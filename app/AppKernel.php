@@ -19,9 +19,10 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
-            new Carteleria\CarteleriaBundle\CarteleriaCarteleriaBundle(),
+            new Carteleria\CarteleriaBundle\carteleriaBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Avanzu\AdminThemeBundle\AvanzuAdminThemeBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
 
         ];
 

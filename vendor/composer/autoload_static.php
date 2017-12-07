@@ -65,6 +65,7 @@ class ComposerStaticInitca260ef238158cb4544051bdb7e696a2
         'F' => 
         array (
             'Fig\\Link\\' => 9,
+            'FOS\\JsRoutingBundle\\' => 20,
         ),
         'D' => 
         array (
@@ -197,6 +198,10 @@ class ComposerStaticInitca260ef238158cb4544051bdb7e696a2
         array (
             0 => __DIR__ . '/..' . '/fig/link-util/src',
         ),
+        'FOS\\JsRoutingBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/friendsofsymfony/jsrouting-bundle',
+        ),
         'Doctrine\\Instantiator\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
@@ -244,6 +249,13 @@ class ComposerStaticInitca260ef238158cb4544051bdb7e696a2
             'SensioLabs\\Security' => 
             array (
                 0 => __DIR__ . '/..' . '/sensiolabs/security-checker',
+            ),
+        ),
+        'J' => 
+        array (
+            'JsonpCallbackValidator' => 
+            array (
+                0 => __DIR__ . '/..' . '/willdurand/jsonp-callback-validator/src',
             ),
         ),
         'D' => 

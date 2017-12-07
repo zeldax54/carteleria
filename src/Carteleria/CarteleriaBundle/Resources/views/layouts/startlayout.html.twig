@@ -3,9 +3,7 @@
     Cartelería Digital
 {% endblock %}
 
-{% block avanzu_page_subtitle  %}
-    Horarios
-{% endblock %}
+
 
 {% block avanzu_page_title  %}
      Cartelería Digital
@@ -15,12 +13,12 @@
 
 {% endblock %}
 
-{% block avanzu_navbar_toggle  %}
+{#{% block avanzu_navbar_toggle  %}#}
 
-{% endblock %}
+{#{% endblock %}#}
 
-{% block avanzu_sidebar_search  %}
-{% endblock %}
+{#{% block avanzu_sidebar_search  %}#}
+{#{% endblock %}#}
 
 {% block avanzu_logo_mini  %}
     FCB
@@ -34,3 +32,7 @@
  <div style="text-align: center">  <strong> Facultad de Ciencias Biomédicas  </strong> </div>
        {% endblock %}
 
+    {% block avanzu_javascripts %}
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+    {% endblock %}
