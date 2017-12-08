@@ -14,10 +14,28 @@
 
      %}
 
+
      <link rel="stylesheet"  href="{{ asset_url }} " media="print" />
      {% endstylesheets %}
 
+     {#{% stylesheets#}
+     {#'@carteleriaBundle/Resources/public/fullcalendar/scheduler/scheduler.css'   output='css/compiled/calendar3.css' filter='yui_css'#}
 
+     {#%}#}
+
+     {#<link rel="stylesheet"  href="{{ asset_url }} " media="print" />#}
+     {#{% endstylesheets %}#}
+
+
+     <link href="{{ asset('bundles/carteleria/public/fullcalendar/scheduler/scheduler.css')}}" rel="stylesheet">
+
+     <link href="{{ asset('bundles/carteleria/public/vex/css/vex.css')}}" rel="stylesheet">
+     <link href="{{ asset('bundles/carteleria/public/vex/css/vex-theme-bottom-right-corner.css')}}" rel="stylesheet">
+     <link href="{{ asset('bundles/carteleria/public/vex/css/vex-theme-default.css')}}" rel="stylesheet">
+     <link href="{{ asset('bundles/carteleria/public/vex/css/vex-theme-os.css')}}" rel="stylesheet">
+     <link href="{{ asset('bundles/carteleria/public/vex/css/vex-theme-wireframe.css')}}" rel="stylesheet">
+     <link href="{{ asset('bundles/carteleria/public/vex/css/vex-theme-top.css')}}" rel="stylesheet">
+     <link href="{{ asset('bundles/carteleria/public/css/custom.css')}}" rel="stylesheet">
 
  {% endblock %}
 
@@ -27,6 +45,7 @@
 
 
 {% block avanzu_page_content %}
+
 
     <div class="col-md-12">
         <div class="box box-primary">
@@ -40,6 +59,7 @@
     </div>
 
     <textarea hidden id="jsontext">{{ jsondata }} </textarea>
+    <textarea hidden id="jsonmaterias">{{ jsonmaterias }} </textarea>
 
 
 
@@ -53,14 +73,26 @@
 
     {% block avanzu_javascripts_inline  %}
 
+<script src="{{ asset('bundles/carteleria/public/moment/moment.js') }}"> </script>
+<script src="{{ asset('bundles/carteleria/public/fullcalendar/dist/fullcalendar.js') }}"> </script>
+<script src="{{ asset('bundles/carteleria/public/fullcalendar/dist/gcal.js') }}"> </script>
+<script src="{{ asset('bundles/carteleria/public/fullcalendar/dist/locale-all.js') }}"> </script>
+<script src="{{ asset('bundles/carteleria/public/fullcalendar/scheduler/scheduler.js') }}"> </script>
+<script src="{{ asset('bundles/carteleria/public/js/file.js') }}"> </script>
 
-        {% javascripts
-        '@carteleriaBundle/Resources/public/moment/*.js' output='js/compiled/calendar.js' filter='yui_js'
-        '@carteleriaBundle/Resources/public/fullcalendar/dist/*.js' output='js/compiled/calendar.js' filter='yui_js'
-        '@carteleriaBundle/Resources/public/js/*' output='js/compiled/main.js' filter='yui_js'
-        %}
-        <script src="{{ asset_url }}"></script>
-        {% endjavascripts %}
+        <script src="{{ asset('bundles/carteleria/public/vex/js/vex.combined.js') }}"></script>
+
+        <script> vex.defaultOptions.className = 'vex-theme-bottom-right-corner'</script>
+
+        {#{% javascripts#}
+        {#'@carteleriaBundle/Resources/public/moment/*.js' output='js/compiled/moment.js' filter='yui_js'#}
+        {#'@carteleriaBundle/Resources/public/fullcalendar/dist/*.js' output='js/compiled/calendar.js' filter='?yui_js'#}
+        {#'@carteleriaBundle/Resources/public/fullcalendar/scheduler/*.js' output='js/compiled/scheduler.js'#}
+
+        {#%}#}
+        {#<script src="{{ asset_url }}"></script>#}
+
+        {#{% endjavascripts %}#}
 
     {% endblock %}
 

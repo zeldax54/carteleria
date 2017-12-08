@@ -44,4 +44,28 @@ class HelpersController extends Controller
         }
 
     }
+
+
+    function getNext($numero){
+        $iter=0;
+        for($x = 'A'; $x < 'ZZ'; $x++)
+        {
+            if($numero==$iter)
+                return $x;
+            $iter++;
+        }
+        return null;
+    }
+
+
+    function random_color_part() {
+        return str_pad( dechex( mt_rand( 1, 150 ) ), 2, '0', STR_PAD_LEFT);
+    }
+
+    function rand_color() {
+        return $this->random_color_part() .$this->random_color_part() .$this->random_color_part();
+    }
+
+
+
 }
