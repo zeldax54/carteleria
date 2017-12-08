@@ -9,3 +9,4 @@ app/log
 .idea/workspace.xml
 .git/*
 
+vendor/avanzu/admin-theme-bundle
