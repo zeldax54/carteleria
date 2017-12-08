@@ -9,7 +9,7 @@ function startcalendar(jsondata,jsonmaterias) {
         locale: 'es',
         minTime: "07:00:00",
         maxTime: "20:00:00",
-        //schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
+        schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
         editable: false, // enable draggable events
         aspectRatio: 1.8,
         scrollTime: '00:00', // undo default 6am scrollTime
