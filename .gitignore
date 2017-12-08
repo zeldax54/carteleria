@@ -1,10 +1,7 @@
 var/cache/*
 var/logs/*
 var/sesions/*
-log/
 .idea/
 *.log
-app/log
-/log
 .idea/workspace.xml
 .git/*
