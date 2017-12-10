@@ -14,9 +14,11 @@ function startcalendar(jsondata,jsonmaterias) {
         aspectRatio: 1.8,
         scrollTime: '00:00', // undo default 6am scrollTime
         header: {
-            left: 'today prev,next',
+            //left: 'today prev,next',
+            left: 'prev,next',
             center: 'title',
-            right: 'timelineDay,timelineThreeDays,agendaWeek,month,listWeek'
+            //right: 'timelineDay,timelineThreeDays,agendaWeek,month,listWeek'
+            right: 'timelineDay,listWeek,month'
         },
         defaultView: 'timelineDay',
         views: {
@@ -57,6 +59,8 @@ function startcalendar(jsondata,jsonmaterias) {
 
 $(function(){
 
+
+
     var jsondatavar=jQuery.parseJSON($("#jsontext").val());
     var jsonmaterias=jQuery.parseJSON($("#jsonmaterias").val());
 
@@ -75,6 +79,12 @@ $(function(){
 
 var timeout = null;
 $(document).ready(function(){
+
+    if($(window).width() <= 767){
+        $('.content-header').hide();
+        $('.calendar').css('font-size','12px !important');
+        $('h2').attr('style','font-size:16px !important');
+    }
 
 
     $("input[name = 'q']").keyup(function(  ) {
