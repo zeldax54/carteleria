@@ -81,6 +81,7 @@ var timeout = null;
 $(document).ready(function(){
 
     if($(window).width() <= 767){
+        screen.orientation.lock('landscape');
         $('.content-header').hide();
         $('.calendar').css('font-size','12px !important');
         $('h2').attr('style','font-size:16px !important');
