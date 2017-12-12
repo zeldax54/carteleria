@@ -84,6 +84,8 @@ $(document).ready(function(){
         $('.content-header').hide();
         $('.calendar').css('font-size','12px !important');
         $('h2').attr('style','font-size:16px !important');
+        $('.logo').hide();
+        $('#calendar').attr('style','margin-left:-8% !important;');
     }
 
 
