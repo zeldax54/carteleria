@@ -11,6 +11,7 @@ function startcalendar(jsondata,jsonmaterias) {
         maxTime: "20:00:00",
         schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
         editable: false, // enable draggable events
+        contentHeight: 'auto',
         aspectRatio: 1.8,
         scrollTime: '00:00', // undo default 6am scrollTime
         header: {
@@ -28,6 +29,13 @@ function startcalendar(jsondata,jsonmaterias) {
             }
         },
         resourceLabelText: 'Materias',
+        //resourceRender: function(resource, leftCells, rightCells) {
+        //    if (resource.id == 'H') {
+        //        leftCells.css('background-color', 'rgb(255, 243, 206)');
+        //        rightCells.css('background-color', 'rgba(255, 243, 206, .5)');
+        //    }
+        //},
+
         resources:
             jsonmaterias
         ,
@@ -86,7 +94,7 @@ $(document).ready(function(){
         $('.calendar').css('font-size','12px !important');
         $('h2').attr('style','font-size:16px !important');
         $('.logo').hide();
-        $('#calendar').attr('style','margin-left:-8% !important;');
+        $('#calendar').attr('style','margin-left:-5% !important;margin-right: -5% !important;');
     }
 
 

@@ -13,3 +13,8 @@
 .borderblueclass button{
 	background:#66b08e !important;
 }
+
+
+#calendar table {
+    table-layout: fixed;
+}
