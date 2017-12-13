@@ -16,7 +16,7 @@ class PlanRoomRepository extends \Doctrine\ORM\EntityRepository
 
     public function Rooms($inicio,$fin,$tipos){
        $em=$this->getEntityManager();
-       $query ="select * from plan_room r join plan_entry e on r.id = e.room_id where e.type in('". implode("','", $tipos). "') and e.start_time >=".$inicio." and e.start_time <=".$fin;
+       $query ="select * from plan_room r join plan_entry e on r.id = e.room_id where e.type in('". implode("','", $tipos). "') and e.start_time >=".$inicio." and e.start_time <=".$fin.' order by e.start_time';
          $stmt = $em->getConnection()->prepare($query);
          $stmt->execute();
         return $stmt->fetchAll();

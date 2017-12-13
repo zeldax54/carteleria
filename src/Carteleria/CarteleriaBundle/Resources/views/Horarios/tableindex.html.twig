@@ -7,11 +7,13 @@
 
      <link href="{{ asset('bundles/carteleria/public/datatables/main/css/jquery.dataTables.css')}}" rel="stylesheet">
     <link href="{{ asset('bundles/carteleria/public/datatables/fixedcolumns/css/fixedColumns.dataTables.css')}}" rel="stylesheet">
-    {#<link href="{{ asset('bundles/gema/clientresources/datatables/fixedhead/css/fixedHeader.dataTables.css')}}" rel="stylesheet">#}
+    <link href="{{ asset('bundles/carteleria/public/datatables/fixedhead/css/fixedHeader.dataTables.css')}}" rel="stylesheet">
     <link href="{{ asset('bundles/carteleria/public/datatables/sort/alt-string.js')}}" rel="stylesheet">
     <link href="{{ asset('bundles/carteleria/public/datatables/checkboxes/dataTables.checkboxes.css')}}" rel="stylesheet">
     <link href="{{ asset('bundles/carteleria/public/datatables/responsive/css/responsive.dataTables.css')}}" rel="stylesheet">
+    <link href="{{ asset('bundles/carteleria/public/datatables/responsive/css/responsive.dataTables.css')}}" rel="stylesheet">
      <link href="{{ asset('bundles/carteleria/public/css/customtable.css')}}" rel="stylesheet">
+     <link href="{{ asset('bundles/carteleria/public/pickaday/css/pikaday.css')}}" rel="stylesheet">
 
  {% endblock %}
 
@@ -19,6 +21,19 @@
     Horarios
 {% endblock %}
 
+{% block avanzu_document_title  %}
+    FCB
+{% endblock %}
+
+
+
+{% block avanzu_page_title  %}
+    FCB
+{% endblock %}
+
+{% block avanzu_breadcrumb %}
+   <div style="text-align: center;margin: 0 auto"> <input type="text" id="datepicker" placeholder="Seleccione una fecha"> </div>
+{% endblock %}
 
 {% block avanzu_page_content %}
 
@@ -58,7 +73,9 @@
 
 
 
+{% block avanzu_footer  %}
 
+{% endblock %}
 
 
 
@@ -67,12 +84,18 @@
     {#<script src="{{ asset('bundles/carteleria/public/bootstrap/js/bootstrap.js')}}"></script>#}
     <script src="{{ asset('bundles/carteleria/public/datatables/main/js/jquery.dataTables.js')}}"></script>
     <script src="{{ asset('bundles/carteleria/public/datatables/fixedcolumns/dataTables.fixedColumns.js')}}"></script>
+    <script src="{{ asset('bundles/carteleria/public/datatables/fixedhead/js/dataTables.fixedHeader.js')}}"></script>
     <script src="{{ asset('bundles/carteleria/public/datatables/tds/tds.js')}}"></script>
     <script src="{{ asset('bundles/carteleria/public/datatables/checkboxes/dataTables.checkboxes.js')}}"></script>
     <script src="{{ asset('bundles/carteleria/public/datatables/responsive/js/dataTables.responsive.js')}}"></script>
+        <script src="{{ asset('bundles/carteleria/public/moment/moment.js') }}"> </script>
+    <script src="{{ asset('bundles/carteleria/public/pickaday/pikaday.js')}}"></script>
+
+
 
     <script>
    $(document).ready(function(){
+       moment.locale("es");
        var timeout = null;
     var tabla= $('#horariostable').DataTable({
                      oLanguage: {
@@ -80,20 +103,32 @@
 							 "sLast": "Ultimo",
 							 "sNext": "Siguiente",
 							 "sPrevious":"Anterior",
-							 "sEmptyTable": "No hay datos para esta tabla"
 
-						 },
-						 "sLengthMenu": "Mostrando _MENU_ Materias"
+
+
+                         },
+                         "sEmptyTable": "No hay datos para esta tabla",
+                         "sInfoEmpty": "No hay Materias para este día",
+						 "sLengthMenu": "Mostrando _MENU_ Materias",
+                         "sInfoFiltered": " - filtrado de _MAX_ entradas",
+                         "sZeroRecords": "No hay datos",
+                         sSearch:"Buscar"
 					 },
-         'stripeClasses':['myodd','myeven']
+         'stripeClasses':['myodd','myeven'],
+        fixedHeader: true
 
 
      });
 
-       new $.fn.dataTable.FixedColumns(tabla, {
-                   leftColumns: 1
-               }
-       );
+//       new $.fn.dataTable.FixedColumns(tabla, {
+//                   leftColumns: 1
+//               }
+//       );
+
+
+
+       tabla.column(1).search(GetTodayDate(),true).draw();
+       tabla.order([1, "asc"]).draw();
 
 
        $("input[name = 'q']").keyup(function(  ) {
@@ -111,6 +146,42 @@
        });
 
 
+       var picker = new Pikaday({
+           field: document.getElementById('datepicker'),
+           format: 'D/MM/YYYY',
+           i18n: {
+               previousMonth : 'Mes Anterior',
+               nextMonth     : 'Next Month',
+               months        : ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agoto','Septiembre','Octubre','Noviembre','Diciembre'],
+               weekdays      : ['Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado'],
+               weekdaysShort : ['Dom','Lun','Mar','Mier','Jue','Vie','Sab']
+           },
+           onSelect: function() {
+
+               var tdate=picker.getDate();
+
+          if(tdate==undefined || tdate==null || tdate=='')
+                  return;
+          var dd = tdate.getDate(); //yields day
+          var MM = tdate.getMonth(); //yields month
+          var yyyy = tdate.getFullYear(); //yields year
+          console.log(dd + "-" +( MM+1) + "-" + yyyy);
+          tabla.column(1).search(dd + "-" +( MM+1) + "-" + yyyy,true).draw();
+          tabla.order([1, "asc"]).draw();
+           }
+       });
+
+
+
+
+
+       function GetTodayDate() {
+           var tdate = new Date();
+           var dd = tdate.getDate(); //yields day
+           var MM = tdate.getMonth(); //yields month
+           var yyyy = tdate.getFullYear(); //yields year
+           return dd + "-" +( MM+1) + "-" + yyyy;
+       }
        function Search(text){
            tabla.search( text).draw();
 

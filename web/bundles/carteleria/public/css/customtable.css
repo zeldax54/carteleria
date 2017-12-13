@@ -10,3 +10,20 @@
 .cabecera{
 	background:#908F94 !important;
 }
+
+
+.ui-datepicker{
+	
+	font-size:16px !important;
+}
+
+
+
+@media screen and (max-width: 767px) {
+.ui-datepicker{
+	
+	font-size:16px !important;
+}
+
+
+}

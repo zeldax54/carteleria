@@ -81,6 +81,7 @@ class HorariosController extends Controller
         $helper->SetTemplateOptions(
             array(
                 'skin'=>'skin-blue',
+                'control_sidebar'=>0,
             )
         );
         $tipos = array('B', 'L', 'N');
@@ -90,17 +91,33 @@ class HorariosController extends Controller
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('carteleriaBundle:PlanRoom');
         $data=$repo->Rooms($inicio,$fin,$tipos);
-        for($i=0;$i<count($data);$i++){
+        //filtrando horas
+        $dataresult=array();
 
-            $data[$i]['descripcion']= date('H:i', $data[$i]['start_time']).' hasta '.date('H:i', $data[$i]['end_time']);
-            $data[$i]['start_time']= date('d-m-Y', $data[$i]['start_time']);
+        for($i=0;$i<count($data);$i++){
+            if(date('d-m-Y', $data[$i]['start_time'])==date('d-m-Y')){
+
+//                print(date('H:i', $data[$i]['end_time']));
+//                print('<br>');
+//                print(date('H:i'));die();
+              if(strtotime('00:'.date('H:i', $data[$i]['end_time'])) > strtotime('00:'.date('H:i')))
+                  $dataresult[]=$data[$i];
+            }else{
+                $dataresult[]=$data[$i];
+            }
         }
 
-//       print_r($data[0]);die();
+        for($i=0;$i<count($dataresult);$i++){
+
+            $dataresult[$i]['descripcion']= date('H:i', $dataresult[$i]['start_time']).' hasta '.date('H:i', $dataresult[$i]['end_time']);
+            $dataresult[$i]['start_time']= date('d-m-Y', $dataresult[$i]['start_time']);
+        }
+
+//       print_r($dataresult[0]);die();
 
         return $this->render('carteleriaBundle:Horarios:tableindex.html.twig',array(
 
-            'data'=>$data
+            'data'=>$dataresult
 
             )
         );
