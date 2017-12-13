@@ -14,6 +14,10 @@ horarios:
     path:     /horarios
     defaults: { _controller: carteleriaBundle:Horarios:index }
 
+horariostable:
+    path:     /horariostable
+    defaults: { _controller: carteleriaBundle:Horarios:horariostable }
+
 
 avanzu_admin_ui_gen_demo:
     path: /demo-admin/ui-elements/general/

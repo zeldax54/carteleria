@@ -18,3 +18,34 @@
 #calendar table {
     table-layout: fixed;
 }
+
+.box-body{
+	
+	border:none !important;
+}
+
+.content-wrapper{
+	
+	border-left:1 px solid #ffffff !important;
+	background-color:#ffffff !important;
+}
+
+@media screen and (max-width: 767px) {
+    .fc-widget-header
+{
+    width:130px !important;
+}
+.fc-widget-content
+{
+    width:100px !important;
+}
+.fc-resourceName
+{
+    background-color:white !important;
+    width:130px !important;
+}
+.fc-divider{
+	 width:0px !important;
+}
+
+}

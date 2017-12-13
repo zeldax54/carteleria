@@ -95,6 +95,7 @@ $(document).ready(function(){
         $('h2').attr('style','font-size:16px !important');
         $('.logo').hide();
         $('#calendar').attr('style','margin-left:-5% !important;margin-right: -5% !important;');
+
     }
 
 

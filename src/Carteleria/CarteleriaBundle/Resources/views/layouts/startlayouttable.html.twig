@@ -1,0 +1,26 @@
+<!DOCTYPE html{% block layouttable_html_start %}{% endblock %}>
+{#
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+#}
+<html lang="{{ app.request.locale }}">
+<head>
+    <title>
+        {% block titulo %}{% endblock %}
+    </title>
+
+    {% block estilos %}{% endblock %}
+</head>
+
+
+<body style="background:white !important;">
+<div class="content-wrapper">
+{% block contenido %}{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{% block javascripts %}{% endblock %}
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+{% extends '@layouts/startlayout.html.twig' %}
+
+
+ {% block avanzu_head %}
+
+
+
+     <link href="{{ asset('bundles/carteleria/public/datatables/main/css/jquery.dataTables.css')}}" rel="stylesheet">
+    <link href="{{ asset('bundles/carteleria/public/datatables/fixedcolumns/css/fixedColumns.dataTables.css')}}" rel="stylesheet">
+    {#<link href="{{ asset('bundles/gema/clientresources/datatables/fixedhead/css/fixedHeader.dataTables.css')}}" rel="stylesheet">#}
+    <link href="{{ asset('bundles/carteleria/public/datatables/sort/alt-string.js')}}" rel="stylesheet">
+    <link href="{{ asset('bundles/carteleria/public/datatables/checkboxes/dataTables.checkboxes.css')}}" rel="stylesheet">
+    <link href="{{ asset('bundles/carteleria/public/datatables/responsive/css/responsive.dataTables.css')}}" rel="stylesheet">
+     <link href="{{ asset('bundles/carteleria/public/css/customtable.css')}}" rel="stylesheet">
+
+ {% endblock %}
+
+{% block avanzu_page_subtitle  %}
+    Horarios
+{% endblock %}
+
+
+{% block avanzu_page_content %}
+
+
+
+    <div class="col-md-12">
+        <table id="horariostable" class="">
+            <thead>
+
+            <tr role="row" class="cabecera">
+                <th>Materia</th>
+                <th>Horario</th>
+                <th>Aula</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for dato in data %}
+
+                <tr>
+                    <td>{{ dato.name }}</td>
+                     <td>{{ dato.start_time }} {{ dato.descripcion }}</td>
+                    <td>{{ dato.room_name }}</td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+    {% block avanzu_javascripts_inline  %}
+ {#<script src="{{ asset('bundles/carteleria/public/jquery-2.2.3.min.js')}}"></script>#}
+    {#<script src="{{ asset('bundles/carteleria/public/bootstrap/js/bootstrap.js')}}"></script>#}
+    <script src="{{ asset('bundles/carteleria/public/datatables/main/js/jquery.dataTables.js')}}"></script>
+    <script src="{{ asset('bundles/carteleria/public/datatables/fixedcolumns/dataTables.fixedColumns.js')}}"></script>
+    <script src="{{ asset('bundles/carteleria/public/datatables/tds/tds.js')}}"></script>
+    <script src="{{ asset('bundles/carteleria/public/datatables/checkboxes/dataTables.checkboxes.js')}}"></script>
+    <script src="{{ asset('bundles/carteleria/public/datatables/responsive/js/dataTables.responsive.js')}}"></script>
+
+    <script>
+   $(document).ready(function(){
+       var timeout = null;
+    var tabla= $('#horariostable').DataTable({
+                     oLanguage: {
+						 "oPaginate": {
+							 "sLast": "Ultimo",
+							 "sNext": "Siguiente",
+							 "sPrevious":"Anterior",
+							 "sEmptyTable": "No hay datos para esta tabla"
+
+						 },
+						 "sLengthMenu": "Mostrando _MENU_ Materias"
+					 },
+         'stripeClasses':['myodd','myeven']
+
+
+     });
+
+       new $.fn.dataTable.FixedColumns(tabla, {
+                   leftColumns: 1
+               }
+       );
+
+
+       $("input[name = 'q']").keyup(function(  ) {
+           var texto=$(this).val();
+           timeout = setTimeout(function (e) {
+               Search(texto);
+           }, 500);
+
+       });
+
+       $('.sidebar-form').submit(function( event ) {
+           event.preventDefault();
+           Search($("input[name = 'q']").val());
+
+       });
+
+
+       function Search(text){
+           tabla.search( text).draw();
+
+       }
+   });
+</script>
+
+    {% endblock %}
+
+
+
+
+
+
+
+
+

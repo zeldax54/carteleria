@@ -1,0 +1,119 @@
+{% extends '@layouts/startlayouttable.html.twig' %}
+
+ {% block titulo %}Horarios{% endblock %}
+
+{% block estilos %}
+
+    <link href="{{ asset('bundles/carteleria/public/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+
+    <link href="{{ asset('bundles/carteleria/public/datatables/main/css/jquery.dataTables.css')}}" rel="stylesheet">
+    <link href="{{ asset('bundles/carteleria/public/datatables/fixedcolumns/css/fixedColumns.dataTables.css')}}" rel="stylesheet">
+    {#<link href="{{ asset('bundles/gema/clientresources/datatables/fixedhead/css/fixedHeader.dataTables.css')}}" rel="stylesheet">#}
+    <link href="{{ asset('bundles/carteleria/public/datatables/sort/alt-string.js')}}" rel="stylesheet">
+    <link href="{{ asset('bundles/carteleria/public/datatables/checkboxes/dataTables.checkboxes.css')}}" rel="stylesheet">
+    <link href="{{ asset('bundles/carteleria/public/datatables/responsive/css/responsive.dataTables.css')}}" rel="stylesheet">
+
+ {% endblock %}
+
+{% block contenido %}
+
+    <table id="horariostable" class="">
+        <thead>
+
+        <tr>
+            <th>Materia</th>
+            <th>Aula</th>
+            <th>Desde</th>
+            <th>Hasta</th>
+        </tr>
+        </thead>
+        <tbody>
+ {% for dato in data %}
+
+<tr>
+    <td>{{ dato.name }}</td>
+    <td>{{ dato.room_name }}</td>
+    <td>{{ dato.start_time }}</td>
+    <td>{{ dato.end_time }}</td>
+</tr>
+{% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+
+
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/carteleria/public/jquery-2.2.3.min.js')}}"></script>
+    <script src="{{ asset('bundles/carteleria/public/bootstrap/js/bootstrap.js')}}"></script>
+    <script src="{{ asset('bundles/carteleria/public/datatables/main/js/jquery.dataTables.js')}}"></script>
+    <script src="{{ asset('bundles/carteleria/public/datatables/fixedcolumns/dataTables.fixedColumns.js')}}"></script>
+    <script src="{{ asset('bundles/carteleria/public/datatables/tds/tds.js')}}"></script>
+    <script src="{{ asset('bundles/carteleria/public/datatables/checkboxes/dataTables.checkboxes.js')}}"></script>
+    <script src="{{ asset('bundles/carteleria/public/datatables/responsive/js/dataTables.responsive.js')}}"></script>
+
+    <script>
+//        $(function(){
+//
+//
+//
+//                var tabla = $('#horariostable').DataTable({
+//                    // scrollY: 300,
+//                    scrollX: true,
+//                    scrollCollapse: true,
+//                    paging: true,
+//                    "bInfo" : false,
+//
+//                    oLanguage: {
+//                        "oPaginate": {
+//                            "sLast": "Ultimo",
+//                            "sNext": "Siguiente",
+//                            "sPrevious":"Anterior",
+//                            "sEmptyTable": "No hay datos para esta tabla"
+//
+//                        },
+////                        "sLengthMenu": "Mostrando _MENU_ toros"
+//                    },
+//                    'stripeClasses':['myodd','myeven']
+//                    ,
+////                    columnDefs: [
+////                        {
+////                            'targets': 0,
+////                            'checkboxes': {
+////                                'selectRow': true
+////                            }
+////                        },
+////                        { type: 'alt-string', targets: [8,4] },
+////                        { "orderable": false, "targets": 2 },
+////                        {
+////                            "targets": [ 4,5,1 ],
+////                            "visible": false
+////                        },
+////                        {
+////                            className: 'control',
+////                            orderable: false,
+////                            targets:   -1
+////                        }
+////
+////                    ],
+//                    'select': {
+//                        'style': 'multi'
+//                    }
+//                    ,"lengthMenu": [[-1,5,10, 25, 50, -1], ["Todos",5,10, 25, 50, "Todos"]],
+//
+////                     responsive:{
+////
+////                         details: {
+////                             type: 'column'
+////                         }
+////                     },
+//
+//                });
+//
+//        });
+
+
+    </script>
+
+{% endblock %}
