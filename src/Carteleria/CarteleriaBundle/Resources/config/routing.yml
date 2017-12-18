@@ -4,11 +4,11 @@ avanzu_admin_dash_demo:
 
 carteleria_carteleria_homepage:
     path:     /
-    defaults: { _controller: carteleriaBundle:Default:index }
+    defaults: { _controller: carteleriaBundle:Horarios:horariostable }
 
 welcome:
     path:     /
-    defaults: { _controller: carteleriaBundle:Default:index }
+    defaults: { _controller: carteleriaBundle:Horarios:horariostable }
 
 horarios:
     path:     /horarios
