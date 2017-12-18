@@ -25,6 +25,9 @@
     FCB
 {% endblock %}
 
+{% block avanzu_logo_lg  %}
+  <img src="{{ asset('bundles/carteleria/public/imgs/logo_fcb_sm.png')}}">
+{% endblock %}
 
 
 {% block avanzu_page_title  %}
@@ -47,6 +50,7 @@
                 <th>Materia</th>
                 <th>Horario</th>
                 <th>Aula</th>
+                <th class="fecha">StartTime</th>
 
             </tr>
             </thead>
@@ -55,8 +59,9 @@
 
                 <tr>
                     <td>{{ dato.name }}</td>
-                     <td>{{ dato.start_time }} {{ dato.descripcion }}</td>
+                     <td>{{ dato.descripcion }}</td>
                     <td>{{ dato.room_name }}</td>
+                    <td>{{ dato.start_time }}</td>
 
                 </tr>
             {% endfor %}
@@ -115,7 +120,14 @@
                          sSearch:"Buscar"
 					 },
          'stripeClasses':['myodd','myeven'],
-        fixedHeader: true
+        fixedHeader: true,
+        "columnDefs": [
+            {
+                "targets": [ 3 ],
+                "visible": false
+
+            }
+        ]
 
 
      });
@@ -127,7 +139,7 @@
 
 
 
-       tabla.column(1).search(GetTodayDate(),true).draw();
+       tabla.column('.fecha').search(GetTodayDate(),true).draw();
        tabla.order([1, "asc"]).draw();
 
 
@@ -166,9 +178,10 @@
           var MM = tdate.getMonth(); //yields month
           var yyyy = tdate.getFullYear(); //yields year
           console.log(dd + "-" +( MM+1) + "-" + yyyy);
-          tabla.column(1).search(dd + "-" +( MM+1) + "-" + yyyy,true).draw();
+          tabla.column('.fecha').search(dd + "-" +( MM+1) + "-" + yyyy,true).draw();
           tabla.order([1, "asc"]).draw();
            }
+
        });
 
 
@@ -183,7 +196,7 @@
            return dd + "-" +( MM+1) + "-" + yyyy;
        }
        function Search(text){
-           tabla.search( text).draw();
+           tabla.column('fecha').search( text).draw();
 
        }
    });

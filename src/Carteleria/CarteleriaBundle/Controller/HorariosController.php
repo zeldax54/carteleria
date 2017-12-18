@@ -18,7 +18,7 @@ class HorariosController extends Controller
         $tipos = array('B', 'L', 'N');
         date_default_timezone_set('America/Argentina/Buenos_Aires');
         $inicio =  $inicio = (!isset($_GET['time']) || !is_numeric($_GET['time'])) ? mktime(0,0,0) : $_GET['time'];
-        $fin = $inicio + 3600 * 24 * 5; //buscar todos los registros para los proximos 5 dias
+        $fin = $inicio + 3600 * 24 * 10; //buscar todos los registros para los proximos 5 dias
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('carteleriaBundle:PlanRoom');
         $data=$repo->Rooms($inicio,$fin,$tipos);
@@ -87,7 +87,7 @@ class HorariosController extends Controller
         $tipos = array('B', 'L', 'N');
         date_default_timezone_set('America/Argentina/Buenos_Aires');
         $inicio =  $inicio = (!isset($_GET['time']) || !is_numeric($_GET['time'])) ? mktime(0,0,0) : $_GET['time'];
-        $fin = $inicio + 3600 * 24 * 5; //buscar todos los registros para los proximos 5 dias
+        $fin = $inicio + 3600 * 24 * 30; //buscar todos los registros para los proximos 5 dias
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('carteleriaBundle:PlanRoom');
         $data=$repo->Rooms($inicio,$fin,$tipos);
@@ -97,9 +97,6 @@ class HorariosController extends Controller
         for($i=0;$i<count($data);$i++){
             if(date('d-m-Y', $data[$i]['start_time'])==date('d-m-Y')){
 
-//                print(date('H:i', $data[$i]['end_time']));
-//                print('<br>');
-//                print(date('H:i'));die();
               if(strtotime('00:'.date('H:i', $data[$i]['end_time'])) > strtotime('00:'.date('H:i')))
                   $dataresult[]=$data[$i];
             }else{
